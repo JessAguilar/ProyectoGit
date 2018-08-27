@@ -7,7 +7,7 @@ package proyectogit;
 
 /**
  *
- * @author Juan Andres
+ * @author Administrador
  */
 public class ProyectoGit {
 
