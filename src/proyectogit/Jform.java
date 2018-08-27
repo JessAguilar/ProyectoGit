@@ -69,6 +69,11 @@ public class Jform extends javax.swing.JFrame {
         jLabel2.setText("Telefono");
 
         AnadirPersonaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/checked.png"))); // NOI18N
+        AnadirPersonaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnadirPersonaButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Id de persona");
 
@@ -153,11 +158,12 @@ public class Jform extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFieldAnadirPersonaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,6 +354,11 @@ public class Jform extends javax.swing.JFrame {
     private void TextFieldNumeroDelEmisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldNumeroDelEmisorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldNumeroDelEmisorActionPerformed
+
+    private void AnadirPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirPersonaButtonActionPerformed
+
+        
+    }//GEN-LAST:event_AnadirPersonaButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -61,25 +63,32 @@ public class Modelo {
    
 }
     
-    public void insertarPersona(PersonaEntidad p)
-{
-    String sql="";
-    try {
-            sql = "INSERT INTO persona()\n"
-                    + "VALUES (?,?)";
+    public void insertarPersona(String email,String telefono,String esCelular)
+    {
+        String sql="";
+        int IDPersona = 0;
+        try {
+                sql = "INSERT INTO persona(persona.IDPersona,persona.email)\n" +
+                      "VALUES (NULL,\""+email+"\")";
                 con = conexion.getInstance().getConnection();
-                PreparedStatement pstm = con.prepareStatement(sql);
-                pstm.setInt(1, p.getIDPersona());
-                pstm.setString(2, p.getEmail());
-                pstm.executeUpdate();
-                pstm.close();
-
+                Statement st = con.createStatement();
+                st.executeUpdate(sql);
+                sql = "SELECT persona.IDPersona\n" +
+                      "FROM persona\n" +
+                      "WHERE persona.email=\""+email+"\"";
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next())
+                {   
+                        IDPersona = rs.getInt(1);
+                }
+                sql = "INSERT INTO telefono(telefono.IDPersona,telefono.numeroDeTelefono,telefono.esCelular)\n" +
+                      "VALUES ("+IDPersona+","+telefono+",\""+esCelular+"\")";
+                st.executeUpdate(sql);
                 con.commit();
                 con.close();
-                
-    } catch (SQLException ex) {
-        Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-   
-}
 }
