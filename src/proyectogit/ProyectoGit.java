@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package proyectogit;
-
+import Entidades.LlamadaEntidad;
+import Entidades.PersonaEntidad;
+import java.util.Date;
 /**
  *
  * @author Administrador
@@ -14,8 +16,14 @@ public class ProyectoGit {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args)
+    {
+        Modelo m = new Modelo();
+        PersonaEntidad p = new PersonaEntidad(0, "hola@bola.com");
+        PersonaEntidad p2 = new PersonaEntidad(1, "pepe@bola.com");
+        Date d = new Date();
+        d.setDate (20081010);
+        
     }
     
 }
