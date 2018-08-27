@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package proyectogit;
-import Entidades.LlamadaEntidad;
 import Entidades.PersonaEntidad;
 import java.util.Date;
 /**
@@ -22,8 +21,7 @@ public class ProyectoGit {
         PersonaEntidad p = new PersonaEntidad(0, "hola@bola.com");
         PersonaEntidad p2 = new PersonaEntidad(1, "pepe@bola.com");
         Date d = new Date();
-        d.setDate (20081010);
-        
+        System.out.println(d.getTime());
     }
     
 }

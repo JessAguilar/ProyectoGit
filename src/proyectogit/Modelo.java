@@ -6,6 +6,8 @@
 package proyectogit;
 
 import Entidades.LlamadaEntidad;
+import Entidades.PersonaEntidad;
+import Entidades.TelefonoEntidad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -26,27 +28,49 @@ public class Modelo {
     try {
         if(p.getTipoLlamada().equals("Local"))
         {
-            sql = "INSERT INTO (IDPersonaSalida, IDPersonaLlegada, inicioLlamada,finLlamada,tipoLlamada,costoTotal)\n"
-                    + "VALUES (?,?,?,?,'Local',?,)";
+            sql = "INSERT INTO llamada(IDPersonaSalida, IDPersonaLlegada, inicioLlamada,finLlamada,tipoLlamada,costoTotal)\n"
+                    + "VALUES (?,?,?,?,'Local',?)";
         }
         else if(p.getTipoLlamada().equals("Internacional"))
         {
-            sql = "INSERT INTO (IDPersonaSalida, IDPersonaLlegada, inicioLlamada,finLlamada,tipoLlamada,costoTotal)\n"
-                    + "VALUES (?,?,?,?,'Internacional',?,)";  
+            sql = "INSERT INTO llamada(IDPersonaSalida, IDPersonaLlegada, inicioLlamada,finLlamada,tipoLlamada,costoTotal)\n"
+                    + "VALUES (?,?,?,?,'Internacional',?)";  
         }
         else if(p.getTipoLlamada().equals("Celular"))
         {
-            sql = "INSERT INTO (IDPersonaSalida, IDPersonaLlegada, inicioLlamada,finLlamada,tipoLlamada,costoTotal)\n"
-                    + "VALUES (?,?,?,?,'Celular',?,)";
+            sql = "INSERT INTO llamada(IDPersonaSalida, IDPersonaLlegada, inicioLlamada,finLlamada,tipoLlamada,costoTotal)\n"
+                    + "VALUES (?,?,?,?,'Celular',?)";
         }
         
                 con = conexion.getInstance().getConnection();
                 PreparedStatement pstm = con.prepareStatement(sql);
                 pstm.setInt(1, p.getIDPersonaSalida());
                 pstm.setInt(2, p.getIDPersonaLlegada());
-                pstm.setString(3, p.getInicioLlamada().toString());
-                pstm.setString(4, p.getFinLlamada().toString());
+                pstm.setLong(3, p.getInicioLlamada());
+                pstm.setLong(4, p.getFinLlamada());
                 pstm.setDouble(5, p.getCostoTotal());
+                pstm.executeUpdate();
+                pstm.close();
+
+                con.commit();
+                con.close();
+                
+    } catch (SQLException ex) {
+        Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+   
+}
+    
+    public void insertarPersona(PersonaEntidad p)
+{
+    String sql="";
+    try {
+            sql = "INSERT INTO persona()\n"
+                    + "VALUES (?,?)";
+                con = conexion.getInstance().getConnection();
+                PreparedStatement pstm = con.prepareStatement(sql);
+                pstm.setInt(1, p.getIDPersona());
+                pstm.setString(2, p.getEmail());
                 pstm.executeUpdate();
                 pstm.close();
 

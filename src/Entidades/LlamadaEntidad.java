@@ -15,12 +15,12 @@ import java.util.Date;
 public class LlamadaEntidad {
       private int IDPersonaSalida;
     private int IDPersonaLlegada;
-    private DateFormat inicioLlamada=new SimpleDateFormat("HH:mm:ss");
-    private DateFormat finLlamada=new SimpleDateFormat("HH:mm:ss");
+    private Date inicioLlamada=new Date();
+    private Date finLlamada=new Date();
     private String tipoLlamada;
     private Double costoTotal;
     
-    public LlamadaEntidad(int IDPersonaSalida,int IDPersonaLlegada,DateFormat inicioLlamada,DateFormat finLlamada,String tipoLlamada,Double costoTotal){
+    public LlamadaEntidad(int IDPersonaSalida,int IDPersonaLlegada,Date inicioLlamada,Date finLlamada,String tipoLlamada,Double costoTotal){
     this.IDPersonaSalida=IDPersonaSalida;
     this.IDPersonaLlegada=IDPersonaLlegada;
     this.inicioLlamada=inicioLlamada;
@@ -64,28 +64,28 @@ public class LlamadaEntidad {
     /**
      * @return the inicioLlamada
      */
-    public DateFormat getInicioLlamada() {
-        return inicioLlamada;
+    public long getInicioLlamada() {
+        return inicioLlamada.getTime();
     }
 
     /**
      * @param inicioLlamada the inicioLlamada to set
      */
-    public void setInicioLlamada(DateFormat inicioLlamada) {
+    public void setInicioLlamada(Date inicioLlamada) {
         this.inicioLlamada = inicioLlamada;
     }
 
     /**
      * @return the finLlamada
      */
-    public DateFormat getFinLlamada() {
-        return finLlamada;
+    public long getFinLlamada() {
+        return finLlamada.getTime();
     }
 
     /**
      * @param finLlamada the finLlamada to set
      */
-    public void setFinLlamada(DateFormat finLlamada) {
+    public void setFinLlamada(Date finLlamada) {
         this.finLlamada = finLlamada;
     }
 
