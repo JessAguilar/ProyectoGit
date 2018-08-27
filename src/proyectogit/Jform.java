@@ -395,7 +395,8 @@ public class Jform extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldNumeroDelEmisorActionPerformed
 
     private void AnadirPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirPersonaButtonActionPerformed
-        // TODO add your handling code here:
+        Modelo m = new Modelo();
+        m.insertarPersona(TextFieldAnadirPersonaEmail.getText(),TextFieldAnadirPersonaTelefono.getText(),jComboBoxCelular.getSelectedItem().toString());
     }//GEN-LAST:event_AnadirPersonaButtonActionPerformed
 
     private void LlamarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LlamarButtonActionPerformed
