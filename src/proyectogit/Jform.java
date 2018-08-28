@@ -7,6 +7,9 @@ package proyectogit;
 
 import Entidades.LlamadaEntidad;
 import Entidades.PersonaEntidad;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.CategoryDataset;
 
 /**
  *
@@ -63,10 +66,9 @@ public class Jform extends javax.swing.JFrame {
         MostrarLlamadasButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         MostrarGastosButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jPanelCostoTotal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -287,7 +289,6 @@ public class Jform extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ComboBoxTipoDeLlamada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
                                 .addComponent(jLabel9)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -324,46 +325,51 @@ public class Jform extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Llamadas", jPanel2);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable2);
-
         MostrarGastosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/bars.png"))); // NOI18N
+        MostrarGastosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarGastosButtonActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Gastos Efectuados Por los Usuarios");
+
+        javax.swing.GroupLayout jPanelCostoTotalLayout = new javax.swing.GroupLayout(jPanelCostoTotal);
+        jPanelCostoTotal.setLayout(jPanelCostoTotalLayout);
+        jPanelCostoTotalLayout.setHorizontalGroup(
+            jPanelCostoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelCostoTotalLayout.setVerticalGroup(
+            jPanelCostoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3)
-                    .addComponent(MostrarGastosButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(164, 164, 164))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(MostrarGastosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelCostoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelCostoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(MostrarGastosButton)
                 .addContainerGap())
         );
@@ -412,6 +418,16 @@ public class Jform extends javax.swing.JFrame {
     private void jComboBoxCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCelularActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxCelularActionPerformed
+
+    private void MostrarGastosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGastosButtonActionPerformed
+        JavaJFreeChartBarChart3D MyChart = new JavaJFreeChartBarChart3D("Telefonos");
+        CategoryDataset dataset = MyChart.createDataset();
+        JFreeChart chart = MyChart.createChart(dataset);
+        ChartPanel chartPanel = new ChartPanel(chart);
+        jPanelCostoTotal.setLayout(new java.awt.BorderLayout());
+        jPanelCostoTotal.add(chartPanel);
+        jPanelCostoTotal.validate();
+    }//GEN-LAST:event_MostrarGastosButtonActionPerformed
     long t=e-d;
     int t1=(int)(t/1000);
     /**
@@ -480,12 +496,11 @@ public class Jform extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelCostoTotal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextFieldAñadirTelefonoIdPersona;
     // End of variables declaration//GEN-END:variables
 }
