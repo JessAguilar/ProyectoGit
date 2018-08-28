@@ -69,6 +69,9 @@ public class Jform extends javax.swing.JFrame {
         MostrarGastosButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jPanelCostoTotal = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanelTiposGrafica = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -376,6 +379,49 @@ public class Jform extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Gastos", jPanel3);
 
+        javax.swing.GroupLayout jPanelTiposGraficaLayout = new javax.swing.GroupLayout(jPanelTiposGrafica);
+        jPanelTiposGrafica.setLayout(jPanelTiposGraficaLayout);
+        jPanelTiposGraficaLayout.setHorizontalGroup(
+            jPanelTiposGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelTiposGraficaLayout.setVerticalGroup(
+            jPanelTiposGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 424, Short.MAX_VALUE)
+        );
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/bars.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelTiposGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jButton1)
+                .addContainerGap(225, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelTiposGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Tipos Grafica", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -428,6 +474,16 @@ public class Jform extends javax.swing.JFrame {
         jPanelCostoTotal.add(chartPanel);
         jPanelCostoTotal.validate();
     }//GEN-LAST:event_MostrarGastosButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JavaJFreeChartBarChart3D MyChart = new JavaJFreeChartBarChart3D("Telefonos");
+        CategoryDataset dataset = MyChart.createDataset();
+        JFreeChart chart = MyChart.createChart(dataset);
+        ChartPanel chartPanel = new ChartPanel(chart);
+        jPanelTiposGrafica.setLayout(new java.awt.BorderLayout());
+        jPanelTiposGrafica.add(chartPanel);
+        jPanelTiposGrafica.validate();
+    }//GEN-LAST:event_jButton1ActionPerformed
     long t=e-d;
     int t1=(int)(t/1000);
     /**
@@ -480,6 +536,7 @@ public class Jform extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldAnadirTelefonoTelefono;
     private javax.swing.JTextField TextFieldNumeroDelEmisor;
     private javax.swing.JTextField TextFieldNumeroDelReceptor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxCelular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -496,7 +553,9 @@ public class Jform extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelCostoTotal;
+    private javax.swing.JPanel jPanelTiposGrafica;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
