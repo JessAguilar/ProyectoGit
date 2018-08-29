@@ -17,11 +17,7 @@ public class ProyectoGit {
      */
     public static void main(String[] args)
     {
-        Modelo m = new Modelo();
-        PersonaEntidad p = new PersonaEntidad(0, "hola@bola.com");
-        PersonaEntidad p2 = new PersonaEntidad(1, "pepe@bola.com");
-        Date d = new Date();
-        System.out.println(d.getTime());
+        
     }
     
 }

@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +24,10 @@ import java.sql.ResultSet;
 public class Modelo {
     private static conexion conexion;
     private Connection con;
+    
+    public Modelo()
+    {}
+     
     
     public void insertarLlamada(LlamadaEntidad p)
 {
@@ -65,11 +70,10 @@ public class Modelo {
     
     public void insertarPersona(String email,String telefono,String esCelular)
     {
-        String sql="";
-        int IDPersona = 0;
+       
         try {
-                sql = "INSERT INTO persona(persona.IDPersona,persona.email)\n" +
-                      "VALUES (NULL,\""+email+"\")";
+                String sql = "INSERT INTO persona(persona.IDPersona,persona.email)\n" +
+                      "VALUES (NULL,'"+email+"')";
                 con = conexion.getInstance().getConnection();
                 Statement st = con.createStatement();
                 st.executeUpdate(sql);
@@ -77,6 +81,7 @@ public class Modelo {
                       "FROM persona\n" +
                       "WHERE persona.email=\""+email+"\"";
                 ResultSet rs = st.executeQuery(sql);
+                int IDPersona=0;
                 while(rs.next())
                 {   
                         IDPersona = rs.getInt(1);
@@ -90,5 +95,46 @@ public class Modelo {
         } catch (SQLException ex) {
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public DefaultTableModel selectPersonasYNumeros()
+    {
+        ResultSet variablex = null;
+        DefaultTableModel modelo = new DefaultTableModel();
+        String letras = "ID\tNOMBRE\tEDAD\tTELEFONO\n";
+        try {
+                    String sql = "SELECT persona.IDPersona,persona.email,telefono.numeroDeTelefono,telefono.esCelular\n" +
+                        "FROM persona,telefono\n" +
+                        "WHERE persona.IDPersona = telefono.IDPersona";
+                   
+                    con = conexion.getInstance().getConnection();
+                    Statement st = con.createStatement();
+                    variablex = st.executeQuery(sql);
+                   
+                    modelo.setColumnIdentifiers(new Object[]{"ID Persona","Email","Numero de Telefono","Es Celular?"});
+                    try{
+                        while(variablex.next()){
+                            modelo.addRow(new Object[]{variablex.getString(1),variablex.getString(2),variablex.getString(3),variablex.getString(4)});
+                        }   
+                    } catch(Exception e){
+
+                    }
+                    
+    
+                    /*while(variablex.next())
+                    {   
+                        id = variablex.getInt(1);
+                        nombre = variablex.getString(2);
+                        edad = variablex.getInt(3);
+                        telefono = variablex.getInt(4);
+                        letras += id+"\t"+nombre+"\t"+edad+"\t"+telefono+"\n";
+                    }*/
+                    con.commit();
+                    con.close();
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return modelo;
     }
 }
