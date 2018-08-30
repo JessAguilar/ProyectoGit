@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class conexion {
     
     private static conexion instance;
@@ -22,7 +23,7 @@ public class conexion {
     private conexion() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost/proyectouno", "root2", "");
+            this.connection = DriverManager.getConnection("jdbc:mysql://192.168.0.108/proyectouno", "root2", "");
             this.connection.setAutoCommit(false);
         } catch (ClassNotFoundException ex) {
             System.out.println("Database Connection Creation Failed : " + ex.getMessage());

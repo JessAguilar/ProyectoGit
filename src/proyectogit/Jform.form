@@ -235,6 +235,9 @@
                   <Image iconType="3" name="/imgsPackage/show-menu-button.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MostrarPersonaYNumerosButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxCelular">
               <Properties>

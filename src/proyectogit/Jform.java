@@ -110,6 +110,11 @@ public class Jform extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablePersonaYNumeros);
 
         MostrarPersonaYNumerosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/show-menu-button.png"))); // NOI18N
+        MostrarPersonaYNumerosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarPersonaYNumerosButtonActionPerformed(evt);
+            }
+        });
 
         jComboBoxCelular.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "si", "no" }));
         jComboBoxCelular.addActionListener(new java.awt.event.ActionListener() {
@@ -484,6 +489,11 @@ public class Jform extends javax.swing.JFrame {
         jPanelTiposGrafica.add(chartPanel);
         jPanelTiposGrafica.validate();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void MostrarPersonaYNumerosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarPersonaYNumerosButtonActionPerformed
+    Modelo modelo =new Modelo();
+    TablePersonaYNumeros.setModel(modelo.selectPersonasYNumeros());
+    }//GEN-LAST:event_MostrarPersonaYNumerosButtonActionPerformed
     long t=e-d;
     int t1=(int)(t/1000);
     /**
