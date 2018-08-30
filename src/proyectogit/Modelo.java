@@ -29,7 +29,8 @@ public class Modelo {
     {}
      
     
-    public void insertarLlamada(LlamadaEntidad p)
+    
+public void insertarLlamada(LlamadaEntidad p)
 {
     String sql="";
     try {
@@ -59,6 +60,28 @@ public class Modelo {
                 pstm.executeUpdate();
                 pstm.close();
 
+                con.commit();
+                con.close();
+                
+    } catch (SQLException ex) {
+        Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+   
+}
+    
+public void insertarTelefono(TelefonoEntidad p)
+{
+    String sql="";
+    try {
+            sql = "INSERT INTO telefono(IDPersona, numeroDeTelefono,esCelular)\n"
+                    + "VALUES (?,?,?)";
+                con = conexion.getInstance().getConnection();
+                PreparedStatement pstm = con.prepareStatement(sql);
+                pstm.setInt(1, p.getIDPersona());
+                pstm.setInt(2, p.getNumeroDeTelefono());
+                pstm.setString(3, p.getEsCelular());
+                pstm.executeUpdate();
+                pstm.close();
                 con.commit();
                 con.close();
                 

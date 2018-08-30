@@ -6,7 +6,9 @@
 package proyectogit;
 
 import Entidades.LlamadaEntidad;
+import java.util.Date;
 import Entidades.PersonaEntidad;
+import Entidades.TelefonoEntidad;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.CategoryDataset;
@@ -52,6 +54,8 @@ public class Jform extends javax.swing.JFrame {
         jComboBoxCelular = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldAñadirTelefonoIdPersona = new javax.swing.JTextField();
+        jComboBoxCelular1 = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -91,6 +95,11 @@ public class Jform extends javax.swing.JFrame {
         jLabel4.setText("Telefono");
 
         AnadirTelefonoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/checked.png"))); // NOI18N
+        AnadirTelefonoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnadirTelefonoButtonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Añadir Telefono");
 
@@ -124,6 +133,15 @@ public class Jform extends javax.swing.JFrame {
         });
 
         jLabel12.setText("Es Celular");
+
+        jComboBoxCelular1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "si", "no" }));
+        jComboBoxCelular1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCelular1ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Es Celular");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,12 +177,16 @@ public class Jform extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(109, 109, 109)
+                                        .addComponent(jComboBoxCelular1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel4)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel13)))
+                                .addContainerGap(20, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboBoxCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,14 +212,16 @@ public class Jform extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFieldAnadirPersonaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldAnadirPersonaTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldAnadirTelefonoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCelular1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AnadirTelefonoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -459,11 +483,13 @@ public class Jform extends javax.swing.JFrame {
     private void LlamarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LlamarButtonActionPerformed
         LlamadaEntidad m = new LlamadaEntidad();
         d=m.getInicioLlamada();
+        
     }//GEN-LAST:event_LlamarButtonActionPerformed
 
     private void ColgarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColgarButtonActionPerformed
         LlamadaEntidad m = new LlamadaEntidad();
         e=m.getInicioLlamada();
+        
     }//GEN-LAST:event_ColgarButtonActionPerformed
 
     private void jComboBoxCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCelularActionPerformed
@@ -494,6 +520,16 @@ public class Jform extends javax.swing.JFrame {
     Modelo modelo =new Modelo();
     TablePersonaYNumeros.setModel(modelo.selectPersonasYNumeros());
     }//GEN-LAST:event_MostrarPersonaYNumerosButtonActionPerformed
+
+    private void AnadirTelefonoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirTelefonoButtonActionPerformed
+        Modelo m = new Modelo();
+        TelefonoEntidad t=new TelefonoEntidad(Integer.parseInt(jTextFieldAñadirTelefonoIdPersona.getText()),Integer.parseInt(TextFieldAnadirTelefonoTelefono.getText()) ,jComboBoxCelular1.getSelectedItem().toString());
+        m.insertarTelefono(t);    
+    }//GEN-LAST:event_AnadirTelefonoButtonActionPerformed
+
+    private void jComboBoxCelular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCelular1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCelular1ActionPerformed
     long t=e-d;
     int t1=(int)(t/1000);
     /**
@@ -548,10 +584,12 @@ public class Jform extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldNumeroDelReceptor;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxCelular;
+    private javax.swing.JComboBox<String> jComboBoxCelular1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

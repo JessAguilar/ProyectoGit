@@ -12,9 +12,9 @@ package Entidades;
 public class TelefonoEntidad {
     private int IDPersona;
     private int numeroDeTelefono;
-    private boolean esCelular;
+    private String esCelular;
     
-    public TelefonoEntidad(int IDPersona,int numeroDeTelefono,boolean esCelular){
+    public TelefonoEntidad(int IDPersona,int numeroDeTelefono,String esCelular){
         this.IDPersona=IDPersona;
         this.numeroDeTelefono=numeroDeTelefono;
         this.esCelular=esCelular;
@@ -51,14 +51,14 @@ public class TelefonoEntidad {
     /**
      * @return the esCelular
      */
-    public boolean isEsCelular() {
+    public String getEsCelular() {
         return esCelular;
     }
 
     /**
      * @param esCelular the esCelular to set
      */
-    public void setEsCelular(boolean esCelular) {
+    public void setEsCelular(String esCelular) {
         this.esCelular = esCelular;
     }
 }
