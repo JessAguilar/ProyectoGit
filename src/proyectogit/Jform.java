@@ -6,7 +6,9 @@
 package proyectogit;
 
 import Entidades.LlamadaEntidad;
+import java.util.Date;
 import Entidades.PersonaEntidad;
+import Entidades.TelefonoEntidad;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.CategoryDataset;
@@ -17,6 +19,10 @@ import org.jfree.data.category.CategoryDataset;
  */
 public class Jform extends javax.swing.JFrame {
 
+    Date fecha= new Date();
+    Date fecha1= new Date();
+    Date Fechaaux=new Date();
+    long a=0,b=0;
     /**
      * Creates new form Jform
      */
@@ -52,17 +58,19 @@ public class Jform extends javax.swing.JFrame {
         jComboBoxCelular = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldAñadirTelefonoIdPersona = new javax.swing.JTextField();
+        jComboBoxCelular1 = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        TextFieldNumeroDelEmisor = new javax.swing.JTextField();
+        TextFieldIdDelEmisor = new javax.swing.JTextField();
         TextFieldNumeroDelReceptor = new javax.swing.JTextField();
         ComboBoxTipoDeLlamada = new javax.swing.JComboBox<>();
         LlamarButton = new javax.swing.JButton();
         ColgarButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLlamadas = new javax.swing.JTable();
         MostrarLlamadasButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -91,6 +99,11 @@ public class Jform extends javax.swing.JFrame {
         jLabel4.setText("Telefono");
 
         AnadirTelefonoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/checked.png"))); // NOI18N
+        AnadirTelefonoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnadirTelefonoButtonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Añadir Telefono");
 
@@ -124,6 +137,15 @@ public class Jform extends javax.swing.JFrame {
         });
 
         jLabel12.setText("Es Celular");
+
+        jComboBoxCelular1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "si", "no" }));
+        jComboBoxCelular1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCelular1ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Es Celular");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,12 +181,16 @@ public class Jform extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(109, 109, 109)
+                                        .addComponent(jComboBoxCelular1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel4)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel13)))
+                                .addContainerGap(20, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboBoxCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,14 +216,16 @@ public class Jform extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFieldAnadirPersonaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldAnadirPersonaTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldAnadirTelefonoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldAñadirTelefonoIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCelular1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AnadirTelefonoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,15 +239,15 @@ public class Jform extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Mostrar Personas y Numeros", jPanel1);
 
-        jLabel7.setText("Num. del Emisor");
+        jLabel7.setText("ID. del Emisor");
 
-        jLabel8.setText("Num. del Receptor");
+        jLabel8.setText("ID. del Receptor");
 
         jLabel9.setText("Tipo de Llamada");
 
-        TextFieldNumeroDelEmisor.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldIdDelEmisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldNumeroDelEmisorActionPerformed(evt);
+                TextFieldIdDelEmisorActionPerformed(evt);
             }
         });
 
@@ -247,7 +275,7 @@ public class Jform extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLlamadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -258,9 +286,14 @@ public class Jform extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTableLlamadas);
 
         MostrarLlamadasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsPackage/show-menu-button.png"))); // NOI18N
+        MostrarLlamadasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarLlamadasButtonActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel11.setText("CostoxMinuto=2 Bs");
@@ -285,7 +318,7 @@ public class Jform extends javax.swing.JFrame {
                         .addGap(76, 76, 76)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TextFieldNumeroDelEmisor))
+                            .addComponent(TextFieldIdDelEmisor))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
@@ -317,7 +350,7 @@ public class Jform extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextFieldNumeroDelEmisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldIdDelEmisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldNumeroDelReceptor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBoxTipoDeLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -325,10 +358,10 @@ public class Jform extends javax.swing.JFrame {
                     .addComponent(LlamarButton)
                     .addComponent(ColgarButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MostrarLlamadasButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Llamadas", jPanel2);
@@ -442,14 +475,13 @@ public class Jform extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    long d,e;
     private void TextFieldNumeroDelReceptorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldNumeroDelReceptorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldNumeroDelReceptorActionPerformed
 
-    private void TextFieldNumeroDelEmisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldNumeroDelEmisorActionPerformed
+    private void TextFieldIdDelEmisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldIdDelEmisorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldNumeroDelEmisorActionPerformed
+    }//GEN-LAST:event_TextFieldIdDelEmisorActionPerformed
 
     private void AnadirPersonaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirPersonaButtonActionPerformed
         Modelo m = new Modelo();
@@ -457,13 +489,20 @@ public class Jform extends javax.swing.JFrame {
     }//GEN-LAST:event_AnadirPersonaButtonActionPerformed
 
     private void LlamarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LlamarButtonActionPerformed
-        LlamadaEntidad m = new LlamadaEntidad();
-        d=m.getInicioLlamada();
+        //LlamadaEntidad m = new LlamadaEntidad(HIDE_ON_CLOSE, HIDE_ON_CLOSE, inicioLlamada, finLlamada, tipoLlamada, Double.MIN_NORMAL);
+        this.a=this.fecha.getTime();
+        this.Fechaaux=this.fecha1;
     }//GEN-LAST:event_LlamarButtonActionPerformed
 
     private void ColgarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColgarButtonActionPerformed
-        LlamadaEntidad m = new LlamadaEntidad();
-        e=m.getInicioLlamada();
+        Date k = new Date();
+        b=k.getTime();
+        long c=(b-this.a)/1000;
+        Double r = ((double)c)*2;
+        LlamadaEntidad m = new LlamadaEntidad(Integer.parseInt(TextFieldIdDelEmisor.getText()), Integer.parseInt(TextFieldNumeroDelReceptor.getText()), fecha, k, ComboBoxTipoDeLlamada.getSelectedItem().toString(),r);
+        Modelo mm = new Modelo();
+        mm.insertarLlamada(m);
+        
     }//GEN-LAST:event_ColgarButtonActionPerformed
 
     private void jComboBoxCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCelularActionPerformed
@@ -494,8 +533,22 @@ public class Jform extends javax.swing.JFrame {
     Modelo modelo =new Modelo();
     TablePersonaYNumeros.setModel(modelo.selectPersonasYNumeros());
     }//GEN-LAST:event_MostrarPersonaYNumerosButtonActionPerformed
-    long t=e-d;
-    int t1=(int)(t/1000);
+
+    private void AnadirTelefonoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirTelefonoButtonActionPerformed
+        Modelo m = new Modelo();
+        TelefonoEntidad t=new TelefonoEntidad(Integer.parseInt(jTextFieldAñadirTelefonoIdPersona.getText()),Integer.parseInt(TextFieldAnadirTelefonoTelefono.getText()) ,jComboBoxCelular1.getSelectedItem().toString());
+        m.insertarTelefono(t);    
+    }//GEN-LAST:event_AnadirTelefonoButtonActionPerformed
+
+    private void jComboBoxCelular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCelular1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCelular1ActionPerformed
+
+    private void MostrarLlamadasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarLlamadasButtonActionPerformed
+    Modelo modelo =new Modelo();
+    jTableLlamadas.setModel(modelo.selectLlamadas());
+    }//GEN-LAST:event_MostrarLlamadasButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -544,14 +597,16 @@ public class Jform extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldAnadirPersonaEmail;
     private javax.swing.JTextField TextFieldAnadirPersonaTelefono;
     private javax.swing.JTextField TextFieldAnadirTelefonoTelefono;
-    private javax.swing.JTextField TextFieldNumeroDelEmisor;
+    private javax.swing.JTextField TextFieldIdDelEmisor;
     private javax.swing.JTextField TextFieldNumeroDelReceptor;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxCelular;
+    private javax.swing.JComboBox<String> jComboBoxCelular1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -569,7 +624,7 @@ public class Jform extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLlamadas;
     private javax.swing.JTextField jTextFieldAñadirTelefonoIdPersona;
     // End of variables declaration//GEN-END:variables
 }

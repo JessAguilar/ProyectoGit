@@ -27,10 +27,6 @@ public class LlamadaEntidad {
     this.costoTotal=costoTotal;    
     }
 
-    public LlamadaEntidad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * @return the IDPersonaSalida
      */
@@ -62,8 +58,8 @@ public class LlamadaEntidad {
     /**
      * @return the inicioLlamada
      */
-    public long getInicioLlamada() {
-        return inicioLlamada.getTime();
+    public Date getInicioLlamada() {
+        return inicioLlamada;
     }
 
     /**
@@ -76,8 +72,8 @@ public class LlamadaEntidad {
     /**
      * @return the finLlamada
      */
-    public long getFinLlamada() {
-        return finLlamada.getTime();
+    public Date getFinLlamada() {
+        return finLlamada;
     }
 
     /**
