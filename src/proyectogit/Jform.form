@@ -325,7 +325,7 @@
                               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel7" max="32767" attributes="0"/>
-                                  <Component id="TextFieldNumeroDelEmisor" max="32767" attributes="0"/>
+                                  <Component id="TextFieldIdDelEmisor" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -369,7 +369,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="TextFieldNumeroDelEmisor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextFieldIdDelEmisor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TextFieldNumeroDelReceptor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ComboBoxTipoDeLlamada" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -379,10 +379,10 @@
                           <Component id="ColgarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="344" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="307" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="MostrarLlamadasButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -390,12 +390,12 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Num. del Emisor"/>
+                <Property name="text" type="java.lang.String" value="ID. del Emisor"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Num. del Receptor"/>
+                <Property name="text" type="java.lang.String" value="ID. del Receptor"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
@@ -403,9 +403,9 @@
                 <Property name="text" type="java.lang.String" value="Tipo de Llamada"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="TextFieldNumeroDelEmisor">
+            <Component class="javax.swing.JTextField" name="TextFieldIdDelEmisor">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldNumeroDelEmisorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldIdDelEmisorActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="TextFieldNumeroDelReceptor">
@@ -456,7 +456,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="jTableLlamadas">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -476,6 +476,9 @@
                   <Image iconType="3" name="/imgsPackage/show-menu-button.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MostrarLlamadasButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>

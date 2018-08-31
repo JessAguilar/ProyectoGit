@@ -17,7 +17,8 @@ public class ProyectoGit {
      */
     public static void main(String[] args)
     {
-        
+        Date m=new Date();
+        System.out.println(m);
     }
     
 }
