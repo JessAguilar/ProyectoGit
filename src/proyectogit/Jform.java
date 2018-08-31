@@ -471,7 +471,7 @@ public class Jform extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxCelularActionPerformed
 
     private void MostrarGastosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGastosButtonActionPerformed
-        JavaJFreeChartBarChart3D MyChart = new JavaJFreeChartBarChart3D("Telefonos");
+        JavaJFreeChartBarChart3D MyChart = new JavaJFreeChartBarChart3D("CostoDeTelefonos",true);
         CategoryDataset dataset = MyChart.createDataset();
         JFreeChart chart = MyChart.createChart(dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -481,12 +481,12 @@ public class Jform extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarGastosButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JavaJFreeChartBarChart3D MyChart = new JavaJFreeChartBarChart3D("Telefonos");
-        CategoryDataset dataset = MyChart.createDataset();
-        JFreeChart chart = MyChart.createChart(dataset);
-        ChartPanel chartPanel = new ChartPanel(chart);
+        JavaJFreeChartBarChart3D MyChart2 = new JavaJFreeChartBarChart3D("TiposGanancia",false);
+        CategoryDataset dataset2 = MyChart2.createDataset2();
+        JFreeChart chart2 = MyChart2.createChart(dataset2);
+        ChartPanel chartPanel2 = new ChartPanel(chart2);
         jPanelTiposGrafica.setLayout(new java.awt.BorderLayout());
-        jPanelTiposGrafica.add(chartPanel);
+        jPanelTiposGrafica.add(chartPanel2);
         jPanelTiposGrafica.validate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
